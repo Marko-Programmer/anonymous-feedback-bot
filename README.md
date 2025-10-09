@@ -43,7 +43,8 @@
   - Google Drive API  
   - Google Generative Language API (Gemini)
 
----
+
+<br><br>
 
 ### 2️⃣ Створи базу даних
 
