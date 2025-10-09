@@ -1,13 +1,10 @@
-# Environment / Keys
-*.env
-application.properties
-
 # 🤖 Anonymous Feedback Bot
 
 Простий Telegram-бот для збору **анонімних відгуків** співробітників автосервісу.  
 Бот аналізує повідомлення через **Gemini API (Google AI)**, визначає настрій, рівень критичності, рекомендації та записує результати у **PostgreSQL** і **Google Sheets**.
 
----
+
+<br><br>
 
 ## 🧩 Основний функціонал
 
@@ -20,7 +17,8 @@ application.properties
 - Збереження фідбеків у базі **PostgreSQL**.
 - Дублювання у **Google Sheets** для зручності перегляду.
 
----
+
+<br><br>
 
 ## ⚙️ Технології
 
@@ -32,7 +30,8 @@ application.properties
 - **Google AI (Gemini API)**
 - **Google Sheets API**
 
----
+
+<br><br>
 
 ## 🚀 Як запустити
 
@@ -51,7 +50,7 @@ application.properties
 CREATE DATABASE feedback_bot;
 
 
----
+<br><br>
 
 ### 3️⃣ Налаштуй `application.properties`
 
@@ -79,7 +78,8 @@ google.sheets.spreadsheetId=your_spreadsheet_id
 
 > ⚠️ Додай файл `credentials.json` (Google Service Account) у `src/main/resources/`.
 
----
+
+<br><br>
 
 ### 4️⃣ Запуск бота
 
@@ -93,7 +93,8 @@ google.sheets.spreadsheetId=your_spreadsheet_id
 bash
 mvn spring-boot:run
 
----
+
+<br><br>
 
 ### 5️⃣ Перевір роботу
 
