@@ -15,6 +15,7 @@ public class FeedbackService {
     private final FeedbackRepository feedbackRepository;
     private final GeminiService geminiService;
     private final GoogleSheetsService googleSheetsService;
+    private final TrelloService trelloService;
     // private final GoogleDocsService googleDocsService;
 
     public Feedback processAndSaveFeedback(String message, Role role, String branch) {
@@ -40,6 +41,20 @@ public class FeedbackService {
             // googleDocsService.appendFeedback(saved);
         } catch (Exception e) {
             System.err.println("Не вдалося записати у Google Sheets: " + e.getMessage());
+        }
+
+
+        if(feedback.getSeverity() >= 4) {
+            try {
+                String trelloName = "[" + feedback.getBranch() + "] [" + feedback.getRole() + "] [" + feedback.getSeverity() + "]";
+                String trelloDesc = "Повідомлення: " + feedback.getMessage() +
+                        "\nПорада: " + feedback.getAdvice() +
+                        "\nДата: " + feedback.getCreatedAt();
+
+                trelloService.createCard(trelloName, trelloDesc);
+            } catch (Exception e) {
+                System.err.println("Не вдалося записати Trello карту: " + e.getMessage());
+            }
         }
 
         return saved;

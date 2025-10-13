@@ -9,6 +9,8 @@ src/main/resources/*.json
 # Environment / Keys
 *.env
 application.properties
+To Do.txt
+ТЗ Бота.txt
 
 ### STS ###
 .apt_generated
