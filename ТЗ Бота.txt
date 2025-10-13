@@ -1,26 +1,143 @@
 
+	ТЗ: Telegram бот для збору анонімних відгуків
 
-	3. (Бонус) Trello
+
+	1. Загальна мета
+
+	Розробити **Telegram-бота**, який дозволяє співробітникам автосервісу анонімно залишати відгуки (скарги, побажання, пропозиції).
+	Бот аналізує текст через **OpenAI API**, визначає тон повідомлення, рівень критичності та зберігає дані для перегляду та аналізу.
+
+
+
+	2. Функціональні вимоги
+
+	2.1 Реєстрація користувача
+
+		При першому запуску бот запитує:
+
+  		1. **Посаду**: механік, електрик, менеджер.
+  		
+		2. **Філію**: назва відділення СТО.
+		Ця інформація зберігається у базі даних (PostgreSQL).
+	
+	2.2 Надсилання фідбеку
+
+		Користувач може у будь-який момент надіслати текстове повідомлення.
+		Текст може містити скарги, пропозиції, побажання.
+		Повідомлення зберігається у базі даних разом з:
+
+  		ID користувача (анонімно, можна просто Telegram ID),
+  		роллю,
+  		філією,
+  		датою і часом.
+
+	2.3 Аналіз повідомлення
+
+		Використати **OpenAI API** для:
+
+  		визначення тональності: негативний / нейтральний / позитивний;
+  		визначення рівня критичності за шкалою **1–5**;
+  		(опціонально) запропонувати можливе рішення / рекомендацію.
+		Зберігати результати аналізу у базі.
+
+	2.4 Збереження у Google Docs
+
+		Кожен новий відгук дублюється у Google Docs (або Google Sheets) для наглядності.
+		Формат рядка:
+ 
+  		[Дата] [Філія] [Роль] [Тон] [Рівень критичності] [Повідомлення]
+ 
+
+	2.5 (Бонус) Trello
 
 		Якщо рівень критичності = 4 або 5:
 
- 		Автоматично створювати Trello-карту при отриманні критичного відгуку (рівень 4-5).
+ 		Автоматично створювати Trello-карту.
   		Назва карти: `[Філія] [Роль] [Рівень критичності]`.
   		Опис карти: текст повідомлення + дата.
 
-
-	4. (Бонус) Адмін-панель
+	2.6 (Бонус) Адмін-панель
 
 		Проста панель (Telegram або веб):
 
  		Перегляд усіх відгуків;
   		Фільтрація по філії / посаді / критичності.
 
+ 
+
+	3. Технічні вимоги
+
+	3.1 Стек
+
+		**Java 17+**
+		**Spring Boot**
+		**PostgreSQL + JPA / Hibernate**
+		**Telegram Bot API** (рекомендується `telegrambots-spring-boot-starter`)
+		**OpenAI API**
+		**Lombok, Jackson**
+		**HTTP клієнт**: `RestTemplate` або `WebClient`
+		**IDE**: IntelliJ IDEA
+
+	3.2 Залежності Maven
+
+		spring-boot-starter
+		spring-boot-starter-web
+		spring-boot-starter-data-jpa
+		postgresql
+		lombok
+		jackson-databind
+		telegrambots-spring-boot-starter
+		google-api-services-docs (або sheets)
+
+		3.3 Конфігурація
+
+		`application.properties`:
+
+		properties
+		spring.datasource.url=jdbc:postgresql://localhost:5432/feedback_bot
+		spring.datasource.username=postgres
+		spring.datasource.password=your_password
+		spring.jpa.hibernate.ddl-auto=update
+
+		telegram.bot.token=YOUR_TELEGRAM_BOT_TOKEN
+		openai.api.key=YOUR_OPENAI_API_KEY
+		google.api.credentials.path=credentials.json
+
+ 
+
+	4. Структура проєкту (рекомендована)
+
+ 
+		com.marko.bot.anonymousfeedback
+		 ├── bot/
+		 │    ├── FeedbackBot.java        // основний клас бота
+		 │    ├── handlers/               // обробники повідомлень
+		 │    └── keyboards/              // клавіатури Telegram
+		 ├── model/
+		 │    ├── Feedback.java           // сутність фідбеку
+		 │    └── User.java               // сутність користувача
+		 ├── repository/
+		 │    ├── FeedbackRepository.java
+		 │    └── UserRepository.java
+		 ├── service/
+		 │    ├── FeedbackService.java
+		 │    ├── OpenAIService.java
+		 │    └── GoogleDocsService.java
+		 ├── config/
+		 │    └── BotConfig.java
+		 └── FeedbackBotApplication.java  // Spring Boot main
+ 
 
 
-    5. Код викласти у GitHub.
+	5. Вимоги до виконання
 
-	6. README:
-        * Як налаштувати `application.properties`;
-		* Як запустити бота;
-		* Приклад роботи (знімок екрану або опис сценарію).
+		1. Код викласти у GitHub.
+		2. README:
+
+		   * Як налаштувати `application.properties`;
+		   * Як запустити бота;
+		   * Приклад роботи (знімок екрану або опис сценарію).
+		3. Основна логіка повинна працювати без бонусних інтеграцій.
+		4. Бонусні функції (Trello, адмін-панель) — додаткові +.
+
+ 
