@@ -78,6 +78,10 @@ google.api.key=your_gemini_api_key
 google.api.credentials.path=src/main/resources/credentials.json
 google.sheets.spreadsheetId=your_spreadsheet_id
 
+trello.api.key=your_trello_api_key
+trello.api.token=your_trello_token
+trello.board.id=your_board_id
+
 
 > ⚠️ Додай файл `credentials.json` (Google Service Account) у `src/main/resources/`.
 
@@ -113,11 +117,7 @@ mvn spring-boot:run
 
 1. Створи акаунт та дошку на [Trello](https://trello.com/).
 2. Створи **API Key** та **Token** у [Trello Developers](https://trello.com/app-key).
-3. Додай ключі у `application.properties`:
-
-trello.api.key=your_trello_api_key
-trello.api.token=your_trello_token
-trello.board.id=your_board_id
+3. Додай ключі у `application.properties` 
 
 <br><br>
 
