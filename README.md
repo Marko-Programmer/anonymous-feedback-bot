@@ -78,8 +78,8 @@ google.api.key=your_gemini_api_key
 google.api.credentials.path=src/main/resources/credentials.json
 google.sheets.spreadsheetId=your_spreadsheet_id
 
-trello.api.key=your_trello_api_key
-trello.api.token=your_trello_token
+trello.api.key=your_trello_api_key, 
+trello.api.token=your_trello_token, 
 trello.board.id=your_board_id
 
 
