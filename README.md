@@ -17,6 +17,7 @@
 - Збереження фідбеків у базі **PostgreSQL**.
 - Дублювання у **Google Sheets** для зручності перегляду.
 - Автоматичне створення **Trello-картки** для критичних відгуків (рівень 4–5).
+- **Адмін панель** для перегляду фідбеків та фільтрації за роллю, філією та критичністю.
 
 
 
@@ -72,9 +73,9 @@ spring.jpa.properties.hibernate.format_sql=true
 
 telegram.bot.username=your_bot_username
 telegram.bot.token=your_bot_token
+telegram.admin.password=your_password_to_admin_panel
 
 google.api.key=your_gemini_api_key
-
 google.api.credentials.path=src/main/resources/credentials.json
 google.sheets.spreadsheetId=your_spreadsheet_id
 
@@ -111,17 +112,22 @@ mvn spring-boot:run
 4. Відправ відгук.
 5. Дані збережуться у базі та з’являться у Google Sheets.
 
+
 <br><br>
 
-### 6️⃣ Підключення Trello (для критичних відгуків)
+
+### 6️⃣ Адмін-панель
+
+1. Введи роль Адмін та пароль (telegram.admin.password).
+2. Через чат-інтерфейс можна:
+3. Переглядати всі фідбеки.
+4. Фільтрувати за роллю, філією та рівнем критичності.
+5. Скинути фільтри або повернутися у головне меню.
+
+<br><br>
+
+### 7️⃣ Підключення Trello (для критичних відгуків)
 
 1. Створи акаунт та дошку на [Trello](https://trello.com/).
 2. Створи **API Key** та **Token** у [Trello Developers](https://trello.com/app-key).
 3. Додай ключі у `application.properties` 
-
-<br><br>
-
-## ✅ Статус
-
-Версія без бонусних завдань (Trello інтеграції та адмін-панелі).
-Функціонал повністю робочий і готовий до демонстрації.
