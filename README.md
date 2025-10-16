@@ -61,27 +61,27 @@ CREATE DATABASE feedback_bot;
 `src/main/resources/application.properties`:
 
 
-spring.application.name=Anonymous Feedback Bot
+- spring.application.name=Anonymous Feedback Bot
 
-spring.datasource.url=jdbc:postgresql://localhost:5432/feedback_bot
-spring.datasource.username=postgres
-spring.datasource.password=your_password
+- spring.datasource.url=jdbc:postgresql://localhost:5432/feedback_bot
+- spring.datasource.username=postgres
+- spring.datasource.password=your_password
 
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.format_sql=true
+- spring.jpa.hibernate.ddl-auto=update
+- spring.jpa.show-sql=true
+- spring.jpa.properties.hibernate.format_sql=true
 
-telegram.bot.username=your_bot_username
-telegram.bot.token=your_bot_token
-telegram.admin.password=your_password_to_admin_panel
+- telegram.bot.username=your_bot_username
+- telegram.bot.token=your_bot_token
+- telegram.admin.password=your_password_to_admin_panel
 
-google.api.key=your_gemini_api_key
-google.api.credentials.path=src/main/resources/credentials.json
-google.sheets.spreadsheetId=your_spreadsheet_id
+- google.api.key=your_gemini_api_key
+- google.api.credentials.path=src/main/resources/credentials.json
+- google.sheets.spreadsheetId=your_spreadsheet_id
 
-trello.api.key=your_trello_api_key, 
-trello.api.token=your_trello_token, 
-trello.board.id=your_board_id
+- trello.api.key=your_trello_api_key
+- trello.api.token=your_trello_token
+- trello.board.id=your_board_id
 
 
 > ⚠️ Додай файл `credentials.json` (Google Service Account) у `src/main/resources/`.
