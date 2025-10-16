@@ -6,9 +6,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 import java.util.ArrayList;
 import java.util.List;
 
-public class BranchKeyboard {
-
-
+public class RoleSelectionKeyboard {
 
     public static ReplyKeyboardMarkup getKeyboard() {
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
@@ -18,16 +16,16 @@ public class BranchKeyboard {
 
         List<KeyboardRow> keyboard = new ArrayList<>();
 
-        // Припустимо, у нас 5 філій
+
         KeyboardRow row1 = new KeyboardRow();
-        row1.add("Філія 1");
-        row1.add("Філія 2");
-        row1.add("Філія 3");
+        row1.add("Механік");
+        row1.add("Електрик");
+        row1.add("Менеджер");
         keyboard.add(row1);
 
+
         KeyboardRow row2 = new KeyboardRow();
-        row2.add("Філія 4");
-        row2.add("Філія 5");
+        row2.add("Адмін");
         keyboard.add(row2);
 
         KeyboardRow row3 = new KeyboardRow();
@@ -35,6 +33,7 @@ public class BranchKeyboard {
         keyboard.add(row3);
 
         keyboardMarkup.setKeyboard(keyboard);
+
         return keyboardMarkup;
     }
 }

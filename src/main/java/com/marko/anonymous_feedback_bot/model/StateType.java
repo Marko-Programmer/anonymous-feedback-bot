@@ -1,0 +1,14 @@
+package com.marko.anonymous_feedback_bot.model;
+
+public enum StateType {
+    MAIN_MENU,
+    REGISTRATION_ROLE,
+    REGISTRATION_BRANCH,
+    REGISTRATION_ADMIN_PASSWORD,
+    WRITING_FEEDBACK,
+    ADMIN_PANEL,
+    FILTER_CHOOSE,
+    FILTER_BY_BRANCH,
+    FILTER_BY_ROLE,
+    FILTER_BY_SEVERITY
+}
